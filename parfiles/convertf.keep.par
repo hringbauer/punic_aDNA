@@ -1,0 +1,12 @@
+BASE:       /n/groups/reich/hringbauer  
+DIR:		explore_ntbk/v42/V42.3/v42.3
+OUT:        explore_ntbk/eigenstrat/punic0.v43
+genotypename:	BASE/DIR.geno
+snpname:	BASE/DIR.snp
+indivname:	BASE/DIR.ind 
+genooutfilename:   BASE/OUT.geno
+snpoutfilename:    BASE/OUT.snp
+indoutfilename:    BASE/OUT.ind
+outputformat:   PACKEDANCESTRYMAP
+hashcheck: YES
+poplistname: BASE/explore_ntbk/parfiles/keep_pops
