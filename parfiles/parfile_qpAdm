@@ -1,5 +1,5 @@
 DIR: ./eigenstrat/combined/
-S1: punic0.v43
+S1: punic1.v43
 indivname: DIR/S1_mod1.ind
 snpname: DIR/S1.snp
 genotypename: DIR/S1.geno
