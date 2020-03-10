@@ -1,6 +1,6 @@
 DIR: ./eigenstrat/combined/
 S1: punic1.v43
-indivname: DIR/S1_mod1.ind
+indivname: DIR/S1_mod_ib.ind
 snpname: DIR/S1.snp
 genotypename: DIR/S1.geno
 popleft: ./parfiles/left
