@@ -1,7 +1,7 @@
 BASE:            /n/groups/reich/hringbauer/git/punic_aDNA
-S1:              eigenstrat/punic1.v43 
+S1:              eigenstrat/punic1.v44 
 S2:              eigenstrat/additional/MinMyc
-OUT:             eigenstrat/combined/punic1.v43
+OUT:             eigenstrat/combined/punic1.v44
 
 geno1: BASE/S1.geno
 snp1:  BASE/S1.snp
