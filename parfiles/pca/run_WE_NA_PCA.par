@@ -1,0 +1,17 @@
+DATE:		   20201116
+BUILD:		   construct_WE_NA_PCA
+BASE:          /n/groups/reich/hringbauer/git/punic_aDNA
+INDIR:         BASE/eigenstrat/
+GENO:          punic1.v44_HO
+OUTDIR:        BASE/output/pca/v44
+genotypename:  INDIR/GENO.geno
+snpname:       INDIR/GENO.snp
+indivname:     INDIR/GENO_mod.ind 
+evecoutname:   OUTDIR/DATE.GENO.BUILD.shrinkmode.evec.txt
+evaloutname:   OUTDIR/DATE.GENO.BUILD.shrinkmode.eval.txt
+poplistname:   BASE/parfiles/pca/BUILD
+lsqproject: YES
+shrinkmode:  YES
+hiprecision: YES
+numoutevec: 4
+topright:  Georgian
