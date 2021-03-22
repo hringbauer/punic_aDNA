@@ -2,7 +2,7 @@ data/
 eigenstrat/
 output/
 figures/
-
+parfiles/pca/logs
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
