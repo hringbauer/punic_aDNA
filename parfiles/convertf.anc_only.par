@@ -1,6 +1,6 @@
 BASE:       /n/groups/reich/  
-DIR:		DAVID/V46/V46.1/v46.1
-OUT:        hringbauer/git/punic_aDNA/eigenstrat/anc_only.v46
+DIR:		DAVID/V46/V46.3/v46.3
+OUT:        hringbauer/git/punic_aDNA/eigenstrat/anc_only.v46.3
 genotypename:	BASE/DIR.geno
 snpname:	BASE/DIR.snp
 indivname:	BASE/DIR.ind 

@@ -1,9 +1,8 @@
-DIR: ./eigenstrat/combined/
-S1: punic.v44
+DIR: /n/groups/reich/hringbauer/git/punic_aDNA/eigenstrat/combined
+S1: punic.v46.3
 indivname: DIR/S1_ind.ind
 snpname: DIR/S1.snp
 genotypename: DIR/S1.geno
-popleft: ./parfiles/left
-popright: ./parfiles/right
+popleft: /n/groups/reich/hringbauer/git/punic_aDNA/parfiles/left
+popright: /n/groups/reich/hringbauer/git/punic_aDNA/parfiles/right
 details: YES
-allsnps: YES
