@@ -1,0 +1,3 @@
+fatalx:
+Unable to allocate -3 unit(s) for item 
+sh: line 1:  7037 Aborted                 /n/groups/reich/hringbauer/git/AdmixTools/bin/qpAdm -p /n/groups/reich/hringbauer/git/punic_aDNA/parfiles/parfile_qpAdm > /n/groups/reich/hringbauer/git/punic_aDNA/output/qpAdm/v46.3/3way/I24208.Italy_Sicily_IA_Polizzello.Israel_Phoenician.Italy_Sardinia_BA_Nuragic.log

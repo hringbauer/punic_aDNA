@@ -1,0 +1,65 @@
+*** Error in `/n/groups/reich/hringbauer/git/AdmixTools/bin/qpAdm': corrupted size vs. prev_size: 0x0000000003b1c750 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x7f7c4)[0x7fa0581a17c4]
+/lib64/libc.so.6(+0x82fd4)[0x7fa0581a4fd4]
+/lib64/libc.so.6(__libc_calloc+0xb4)[0x7fa0581a8564]
+/n/groups/reich/hringbauer/git/AdmixTools/bin/qpAdm[0x4092b1]
+/n/groups/reich/hringbauer/git/AdmixTools/bin/qpAdm[0x40b19f]
+/n/groups/reich/hringbauer/git/AdmixTools/bin/qpAdm[0x40b3ea]
+/n/groups/reich/hringbauer/git/AdmixTools/bin/qpAdm[0x4023f4]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7fa058144505]
+/n/groups/reich/hringbauer/git/AdmixTools/bin/qpAdm[0x401eb9]
+======= Memory map: ========
+00400000-0047f000 r-xp 00000000 00:2a 63121248249                        /n/groups/reich/hringbauer/git/AdmixTools/bin/qpAdm
+0067e000-0067f000 r--p 0007e000 00:2a 63121248249                        /n/groups/reich/hringbauer/git/AdmixTools/bin/qpAdm
+0067f000-00680000 rw-p 0007f000 00:2a 63121248249                        /n/groups/reich/hringbauer/git/AdmixTools/bin/qpAdm
+00680000-00683000 rw-p 00000000 00:00 0 
+01642000-2d564000 rw-p 00000000 00:00 0                                  [heap]
+7fa03c000000-7fa03c021000 rw-p 00000000 00:00 0 
+7fa03c021000-7fa040000000 ---p 00000000 00:00 0 
+7fa04080a000-7fa056e67000 rw-p 00000000 00:00 0 
+7fa057789000-7fa05779f000 r-xp 00000000 00:2b 5898226537                 /n/app/gcc/6.2.0/lib64/libgcc_s.so.1
+7fa05779f000-7fa05799e000 ---p 00016000 00:2b 5898226537                 /n/app/gcc/6.2.0/lib64/libgcc_s.so.1
+7fa05799e000-7fa05799f000 r--p 00015000 00:2b 5898226537                 /n/app/gcc/6.2.0/lib64/libgcc_s.so.1
+7fa05799f000-7fa0579a0000 rw-p 00016000 00:2b 5898226537                 /n/app/gcc/6.2.0/lib64/libgcc_s.so.1
+7fa0579a0000-7fa0579de000 r-xp 00000000 00:2b 5898517627                 /n/app/gcc/6.2.0/lib64/libquadmath.so.0.0.0
+7fa0579de000-7fa057bdd000 ---p 0003e000 00:2b 5898517627                 /n/app/gcc/6.2.0/lib64/libquadmath.so.0.0.0
+7fa057bdd000-7fa057bde000 r--p 0003d000 00:2b 5898517627                 /n/app/gcc/6.2.0/lib64/libquadmath.so.0.0.0
+7fa057bde000-7fa057bdf000 rw-p 0003e000 00:2b 5898517627                 /n/app/gcc/6.2.0/lib64/libquadmath.so.0.0.0
+7fa057bdf000-7fa057d03000 r-xp 00000000 00:2b 5898226539                 /n/app/gcc/6.2.0/lib64/libgfortran.so.3.0.0
+7fa057d03000-7fa057f03000 ---p 00124000 00:2b 5898226539                 /n/app/gcc/6.2.0/lib64/libgfortran.so.3.0.0
+7fa057f03000-7fa057f04000 r--p 00124000 00:2b 5898226539                 /n/app/gcc/6.2.0/lib64/libgfortran.so.3.0.0
+7fa057f04000-7fa057f06000 rw-p 00125000 00:2b 5898226539                 /n/app/gcc/6.2.0/lib64/libgfortran.so.3.0.0
+7fa057f06000-7fa057f1d000 r-xp 00000000 fd:00 12583547                   /usr/lib64/libpthread-2.17.so
+7fa057f1d000-7fa05811c000 ---p 00017000 fd:00 12583547                   /usr/lib64/libpthread-2.17.so
+7fa05811c000-7fa05811d000 r--p 00016000 fd:00 12583547                   /usr/lib64/libpthread-2.17.so
+7fa05811d000-7fa05811e000 rw-p 00017000 fd:00 12583547                   /usr/lib64/libpthread-2.17.so
+7fa05811e000-7fa058122000 rw-p 00000000 00:00 0 
+7fa058122000-7fa0582e5000 r-xp 00000000 fd:00 12583521                   /usr/lib64/libc-2.17.so
+7fa0582e5000-7fa0584e5000 ---p 001c3000 fd:00 12583521                   /usr/lib64/libc-2.17.so
+7fa0584e5000-7fa0584e9000 r--p 001c3000 fd:00 12583521                   /usr/lib64/libc-2.17.so
+7fa0584e9000-7fa0584eb000 rw-p 001c7000 fd:00 12583521                   /usr/lib64/libc-2.17.so
+7fa0584eb000-7fa0584f0000 rw-p 00000000 00:00 0 
+7fa0584f0000-7fa0585f1000 r-xp 00000000 fd:00 12583529                   /usr/lib64/libm-2.17.so
+7fa0585f1000-7fa0587f0000 ---p 00101000 fd:00 12583529                   /usr/lib64/libm-2.17.so
+7fa0587f0000-7fa0587f1000 r--p 00100000 fd:00 12583529                   /usr/lib64/libm-2.17.so
+7fa0587f1000-7fa0587f2000 rw-p 00101000 fd:00 12583529                   /usr/lib64/libm-2.17.so
+7fa0587f2000-7fa059538000 r-xp 00000000 00:2b 5906170643                 /n/app/openblas/0.2.19/lib/libopenblas_core2p-r0.2.19.so
+7fa059538000-7fa059738000 ---p 00d46000 00:2b 5906170643                 /n/app/openblas/0.2.19/lib/libopenblas_core2p-r0.2.19.so
+7fa059738000-7fa05973e000 r--p 00d46000 00:2b 5906170643                 /n/app/openblas/0.2.19/lib/libopenblas_core2p-r0.2.19.so
+7fa05973e000-7fa059747000 rw-p 00d4c000 00:2b 5906170643                 /n/app/openblas/0.2.19/lib/libopenblas_core2p-r0.2.19.so
+7fa059747000-7fa0597a1000 rw-p 00000000 00:00 0 
+7fa0597a1000-7fa0599eb000 r-xp 00000000 00:2b 5898523378                 /n/app/gsl/2.3/lib/libgsl.so.19.3.0
+7fa0599eb000-7fa059beb000 ---p 0024a000 00:2b 5898523378                 /n/app/gsl/2.3/lib/libgsl.so.19.3.0
+7fa059beb000-7fa059bee000 r--p 0024a000 00:2b 5898523378                 /n/app/gsl/2.3/lib/libgsl.so.19.3.0
+7fa059bee000-7fa059bff000 rw-p 0024d000 00:2b 5898523378                 /n/app/gsl/2.3/lib/libgsl.so.19.3.0
+7fa059bff000-7fa059c21000 r-xp 00000000 fd:00 12583514                   /usr/lib64/ld-2.17.so
+7fa059e09000-7fa059e0e000 rw-p 00000000 00:00 0 
+7fa059e17000-7fa059e20000 rw-p 00000000 00:00 0 
+7fa059e20000-7fa059e21000 r--p 00021000 fd:00 12583514                   /usr/lib64/ld-2.17.so
+7fa059e21000-7fa059e22000 rw-p 00022000 fd:00 12583514                   /usr/lib64/ld-2.17.so
+7fa059e22000-7fa059e23000 rw-p 00000000 00:00 0 
+7fffbf19d000-7fffbf1bf000 rw-p 00000000 00:00 0                          [stack]
+7fffbf1e9000-7fffbf1eb000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+sh: line 1:   832 Aborted                 /n/groups/reich/hringbauer/git/AdmixTools/bin/qpAdm -p /n/groups/reich/hringbauer/git/punic_aDNA/parfiles/parfile_qpAdm > /n/groups/reich/hringbauer/git/punic_aDNA/output/qpAdm/v46.3/3way/I24206.Tunisia_N.Greece_BA_Mycenaean.Italy_Sardinia_BA_Nuragic.log

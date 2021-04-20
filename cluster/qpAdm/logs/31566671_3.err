@@ -1,0 +1,9 @@
+fatalx:
+No samples: Italy_Sicily_IA_Polizzelloo
+sh: line 1: 16628 Aborted                 /n/groups/reich/hringbauer/git/AdmixTools/bin/qpAdm -p /n/groups/reich/hringbauer/git/punic_aDNA/parfiles/parfile_qpAdm > /n/groups/reich/hringbauer/git/punic_aDNA/output/qpAdm/v46.3/2way/I8135.Italy_Sicily_IA_Polizzello.Greece_BA_Mycenaean.log
+***warning: no parameters in /n/groups/reich/hringbauer/git/punic_aDNA/parfiles/parfile_qpAdm
+fatalx:
+(getsnps) null snpnamesh: line 1: 16786 Aborted                 /n/groups/reich/hringbauer/git/AdmixTools/bin/qpAdm -p /n/groups/reich/hringbauer/git/punic_aDNA/parfiles/parfile_qpAdm > /n/groups/reich/hringbauer/git/punic_aDNA/output/qpAdm/v46.3/2way/I8135.Italy_Sicily_IA_Polizzello.Italy_Sardinia_BA_Nuragic.log
+fatalx:
+nleft not less than or equal to nright
+sh: line 1: 17300 Aborted                 /n/groups/reich/hringbauer/git/AdmixTools/bin/qpAdm -p /n/groups/reich/hringbauer/git/punic_aDNA/parfiles/parfile_qpAdm > /n/groups/reich/hringbauer/git/punic_aDNA/output/qpAdm/v46.3/2way/I8135.Israel_Phoenician.Italy_Sardinia_BA_Nuragic.log
