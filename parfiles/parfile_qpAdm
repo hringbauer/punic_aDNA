@@ -6,3 +6,4 @@ genotypename: DIR/S1.geno
 popleft: /n/groups/reich/hringbauer/git/punic_aDNA/parfiles/left
 popright: /n/groups/reich/hringbauer/git/punic_aDNA/parfiles/right
 details: YES
+allsnps: YES

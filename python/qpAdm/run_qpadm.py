@@ -58,7 +58,7 @@ def qpAdm_run(leftpops, rightpops, output_file,
     
     output_path = output_folder + output_file
     command = f"{path_bin_qpAdm} -p {parfile_path} > {output_path}"
-    print(f"Running command: \n{command}")
+    #print(f"Running command: \n{command}")
     
     ### Run qpAdm
     start = time()

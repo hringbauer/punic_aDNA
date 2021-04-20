@@ -3,6 +3,7 @@ eigenstrat/
 output/
 figures/
 parfiles/pca/logs
+cluster/qpadm/logs/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
