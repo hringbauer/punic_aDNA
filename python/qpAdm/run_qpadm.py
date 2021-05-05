@@ -31,8 +31,9 @@ def qpAdm_run(leftpops, rightpops, output_file,
     input_ind_suff: Suffix of .ind file. To allow modified populations
     input_ind: name of the input .ind file. If given - write over default"""
     #print(os.getcwd())
-    parfile_path = par_file_folder + "parfile_qpAdm"
-    left_path, right_path = par_file_folder + "left", par_file_folder + "right"
+    parfile_path = par_file_folder + "parfile." + output_file
+    left_path = par_file_folder + "left." + output_file
+    right_path = par_file_folder + "right." + output_file
     
     ### Create the parfile:
     with open(parfile_path, 'w') as f:
@@ -56,7 +57,7 @@ def qpAdm_run(leftpops, rightpops, output_file,
     with open(right_path, 'w') as f:
         f.write("\n".join(rightpops))
     
-    output_path = output_folder + output_file
+    output_path = output_folder + output_file + ".log"
     command = f"{path_bin_qpAdm} -p {parfile_path} > {output_path}"
     #print(f"Running command: \n{command}")
     

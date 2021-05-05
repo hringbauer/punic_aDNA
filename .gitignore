@@ -2,7 +2,8 @@ data/
 eigenstrat/
 output/
 figures/
-parfiles/pca/logs
+parfiles/qpAdm/
+parfiles/pca/logs/
 cluster/qpAdm/logs/
 
 # Byte-compiled / optimized / DLL files
