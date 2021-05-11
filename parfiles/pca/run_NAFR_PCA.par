@@ -1,12 +1,12 @@
-DATE:		   20210504
+DATE:		   20210511
 BUILD:		   construct_NAFR_PCA
 BASE:          /n/groups/reich/hringbauer/git/punic_aDNA
 INDIR:         BASE/eigenstrat/nafr
-GENO:          v46.3
+GENO:          v46.3.v2
 OUTDIR:        BASE/output/pca/v46
 genotypename:  INDIR/GENO.geno
 snpname:       INDIR/GENO.snp
-indivname:     INDIR/GENO_mod.ind 
+indivname:     INDIR/GENO_mod2.ind   
 evecoutname:   OUTDIR/DATE.GENO.BUILD.smYES.outitY.evec.txt
 evaloutname:   OUTDIR/DATE.GENO.BUILD.smYES.outitY.eval.txt
 snpweightoutname: OUTDIR/DATE.GENO.BUILD.smYES.outitY.weights.txt
