@@ -31,3 +31,4 @@ PFILE="run_NAFR_PCA.par"
 
 ##### ACTION #####
 ~np29/o2bin/smartpca -p ./$PFILE
+
