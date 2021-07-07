@@ -1,6 +1,6 @@
 BASE:       /n/groups/reich/  
-DIR:		DAVID/V46/V46.1/v46.1_HO
-OUT:        hringbauer/git/punic_aDNA/eigenstrat/punic.v46_HO.share
+DIR:		DAVID/V48/V48.2/v48.2_HO
+OUT:        hringbauer/git/punic_aDNA/eigenstrat/punic.v48.2_HO
 genotypename:	BASE/DIR.geno
 snpname:	BASE/DIR.snp
 indivname:	BASE/DIR.ind 
@@ -9,4 +9,4 @@ snpoutfilename:    BASE/OUT.snp
 indoutfilename:    BASE/OUT.ind
 outputformat:   PACKEDANCESTRYMAP
 hashcheck: YES
-poplistname: BASE/hringbauer/git/punic_aDNA/parfiles/pca/keep_pops1
+poplistname: BASE/hringbauer/git/punic_aDNA/parfiles/pca/keep_pops.v48.2
