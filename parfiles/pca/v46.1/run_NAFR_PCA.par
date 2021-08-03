@@ -1,9 +1,9 @@
-DATE:		   20210803
+DATE:		   20210511
 BUILD:		   construct_NAFR_PCA
 BASE:          /n/groups/reich/hringbauer/git/punic_aDNA
 INDIR:         BASE/eigenstrat/nafr
-GENO:          v49.1
-OUTDIR:        BASE/output/pca/v49.1
+GENO:          v46.3.v2
+OUTDIR:        BASE/output/pca/v46
 genotypename:  INDIR/GENO.geno
 snpname:       INDIR/GENO.snp
 indivname:     INDIR/GENO_mod2.ind   
@@ -12,9 +12,6 @@ evaloutname:   OUTDIR/DATE.GENO.BUILD.smYES.outitY.eval.txt
 snpweightoutname: OUTDIR/DATE.GENO.BUILD.smYES.outitY.weights.txt
 poplistname:   BASE/parfiles/pca/BUILD
 lsqproject: YES
-shrinkmode: YES
+shrinkmode:  YES
 hiprecision: YES
 numoutevec: 4
-numoutlieriter: 5
-numoutlierevec: 4
-outliersigmathresh: 9
