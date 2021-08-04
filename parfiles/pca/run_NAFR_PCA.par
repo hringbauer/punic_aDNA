@@ -15,6 +15,6 @@ lsqproject: YES
 shrinkmode: YES
 hiprecision: YES
 numoutevec: 4
-numoutlieriter: 5
+numoutlieriter: 20
 numoutlierevec: 4
-outliersigmathresh: 9
+outliersigmathresh: 6
