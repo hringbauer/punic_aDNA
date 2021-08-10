@@ -98,25 +98,22 @@ def load_pvals(path):
     return float(pval), pops   
 
 
-def fig_admix(axes=[], res=[], p_vals=[], target_pops=[], 
-              source_pops=[], figsize=(12,8), 
-              save_path="", lw=2,
-              pval_lim=[1e-6,1.0], stds=[], 
+def fig_admix(axes=[], res=[], p_vals=[], source_pops=[], 
+              labels=[], xlabels=[],
+              figsize=(12,8), save_path="", lw=2,
+              pval_lim=[1e-6,1.0], stds=[], alpha=0.9,
               l_pos = (1, 0.5), fs = 12, bw = 0.85, 
               c=[], ec = "white", show=False,
-              height_ratios=[1, 8], xlabels=[],
-              rotation=90, legend=True):
+              height_ratios=[1, 8], rotation=90, legend=True):
     """Make a Figure of the admixture coefficients.
     axes: 2 axis where to plot Fractions and p-Values onto
-    res: nxk Array of Results
+    res: Array of Results [n targets, k source pops]
     p_vals: Array of p-Vals [n]
-    target_pops: String Array of Target Pops [n]
     source_pops: String Array of Source Pops [k]
+    xlabels: String Array of Labels on x Axis [n]
     stds: Standard Errors. If none are given do not plot them
     l_pos: Where to place the Legend.
     lw: Linewidth of bar"""
-    # Create Pandas Dataframe for Plot
-    #pd.DataFrame(data=target_pops, index=r, columns=source_pops)
     
     ### Define Axes if not given
     if len(axes)==0:
@@ -125,16 +122,19 @@ def fig_admix(axes=[], res=[], p_vals=[], target_pops=[],
                                  figsize=figsize)
     ax0, ax1 = axes
     
+    if len(labels)==0:
+        labels=source_pops
+    
     # Plot Parameters
-    r = np.arange(len(target_pops))
+    r = np.arange(len(xlabels))
     barWidth = bw
     if len(c)==0:
         c=["DeepPink", "MediumBlue", "purple", "yellowgreen", "gold"]
     
     for i, s in reversed(list(enumerate(source_pops))): # From last to first (For Legend)
-        s = source_pops[i]
-        b = np.sum(res[:,:i], axis=1)
-        ax1.bar(r, res[:,i], bottom=b, color=c[i], edgecolor=ec, width=barWidth, label=s, alpha=0.9)
+        b = np.sum(res[:,:i], axis=1) # Do the cumsum of all previous admixture fracs
+        ax1.bar(r, res[:,i], bottom=b, color=c[i], edgecolor=ec, 
+                width=barWidth, label=labels[i], alpha=alpha)
         
         if len(stds)>0: # Plot some standard deviations.
             ax1.errorbar(r, b+res[:,i], yerr=stds[:,i], fmt='none', linewidth=lw, color="k")
@@ -149,9 +149,6 @@ def fig_admix(axes=[], res=[], p_vals=[], target_pops=[],
     ################
     # Custom x axis
     ax1.set_xticks(r)
-    
-    if len(xlabels)==0:
-        xlabels = target_pops
     ax1.set_xticklabels(xlabels, fontsize=fs, rotation=rotation)
 
     # Add a legend
@@ -162,14 +159,14 @@ def fig_admix(axes=[], res=[], p_vals=[], target_pops=[],
     
     ax1.set_ylabel("Fraction Ancestry", fontsize=fs*1.5)
     ax1.set_ylim([0,1])
-    ax1.set_xlim([-0.6, len(target_pops)-0.4])
+    ax1.set_xlim([-0.6, len(xlabels)-0.4])
     
     ax0.set_yscale("log")
     ax0.set_ylim(pval_lim)
     ax0.bar(r, p_vals, color="grey", width=barWidth, alpha=0.8, zorder=1)
     ax0.axhline(y=0.05, color='r', zorder=0)
     ax0.set_ylabel("p-Val", fontsize=fs)
-    ax0.set_xlim([-0.6,len(target_pops)-0.4])
+    ax0.set_xlim([-0.6,len(xlabels)-0.4])
     ax0.set_xticks([])
     
     # Adjust position of subplots
@@ -294,15 +291,18 @@ def create_latex_lines(source_pops, admix_coeffs, stds, p_vals, na = "-", rp = "
         
     return out # Return the full text
 
-def plot_qpadm(dir_path, test_pops, save_path="", l_pos = (0.4, 1.15), 
+def plot_qpadm(dir_path, test_pops, xlabels=[], labels=[],
+               save_path="", l_pos = (0.4, 1.15), 
                best=True, figsize=(12,8), bw = 0.85, lw=2,
-               height_ratios = [1,8], xlabels=[],
-               c=[], ec="white", fs=10, pval_lim = [1e-3,1],
+               height_ratios = [1,8], sort_p=False, 
+               c=[], alpha=0.9, ec="white", fs=10, pval_lim = [1e-3,1],
                latex=False, dataframe=False):
     """Do 3 Way Admixtures of Sardinia
     best: Whether to use highest p-Val Submodel: 0 use the first, 
     True use the best p-Value, 
-    else use the old (first feasible)"""
+    else use the old (first feasible).
+    labels: What labels to give to Admixture Components
+    sort_p: Whether to sort by p-Values (from highest to lowest)"""
     admix_coeffs = []
     p_vals = []
     pops_t = [] 
@@ -313,7 +313,6 @@ def plot_qpadm(dir_path, test_pops, save_path="", l_pos = (0.4, 1.15),
     for f in test_pops:
         full_path = dir_path + str(f) + ".log" # Other "outputMycSicily_"
         res, p_val_ls, pops, std = load_qp_adm(full_path)
-
         pops_t.append(pops[0])
         
         if best == 0:
@@ -346,20 +345,27 @@ def plot_qpadm(dir_path, test_pops, save_path="", l_pos = (0.4, 1.15),
             print(p_val_ls[i])
 
     admix_coeffs, stds = np.array(admix_coeffs), np.array(stds)
+    p_vals = np.array(p_vals)
     source_pops = pops[1:]
     
-    print(pops_t)
+    #print(pops_t)
+    if sort_p:
+        idx = np.argsort(-p_vals)
+        
+        admix_coeffs = admix_coeffs[idx,:]
+        stds = stds[idx,:]
+        p_vals = p_vals[idx]
+        pops_t = np.array(pops_t)[idx]
+        xlabels = np.array(xlabels)[idx]
     
-    fig_admix(res=admix_coeffs, 
-              p_vals=p_vals, 
-              target_pops=pops_t, 
+    fig_admix(res=admix_coeffs, stds=stds, 
+              p_vals=p_vals, labels=labels, xlabels=xlabels,
               source_pops=source_pops, 
-              pval_lim=pval_lim, 
-              stds=stds, save_path = save_path, 
-              l_pos = l_pos, lw=lw, xlabels=xlabels,
+              pval_lim=pval_lim, save_path = save_path, 
+              l_pos = l_pos, lw=lw, 
               height_ratios=height_ratios,
               fs=fs, figsize=figsize, 
-              bw = bw, c=c, ec = ec)
+              bw = bw, c=c, ec = ec, alpha=alpha)
     
     if latex:
         source_pops = [([t] + pops[1:]) for t in pops_t]
@@ -455,7 +461,7 @@ def plot_qpadm_split(dir_path, test_pops=[[]],
             
         fig_admix(axes=[ax_adm, ax_p], res=admix_coeffs, 
                   p_vals=p_vals, 
-                  target_pops=pops_t, 
+                  xlabels=pops_t, 
                   source_pops=source_pops, 
                   pval_lim=pval_lim, 
                   stds=stds, save_path = "", 
