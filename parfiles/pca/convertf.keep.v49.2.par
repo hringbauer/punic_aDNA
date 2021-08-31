@@ -3,7 +3,7 @@ DIR:		DAVID/V49/V49.2/v49.2_HO
 OUT:        hringbauer/git/punic_aDNA/eigenstrat/punic.v49.2_HO
 genotypename:	BASE/DIR.geno
 snpname:	BASE/DIR.snp
-indivname:	/n/groups/reich/hringbauer/Data/v49.2.flagged.ind 
+indivname:	/n/groups/reich/hringbauer/Data/v49.2.flagged.included.ind
 genooutfilename:   BASE/OUT.geno
 snpoutfilename:    BASE/OUT.snp
 indoutfilename:    BASE/OUT.ind
