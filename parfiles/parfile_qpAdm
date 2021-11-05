@@ -1,9 +1,0 @@
-DIR: ./eigenstrat/combined/
-S1: punic.v49.0
-indivname: DIR/S1.ind
-snpname: DIR/S1.snp
-genotypename: DIR/S1.geno
-popleft: ./parfiles/left
-popright: ./parfiles/right
-details: YES
-allsnps: YES

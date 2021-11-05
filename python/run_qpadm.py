@@ -22,7 +22,7 @@ def qpAdm_run(leftpops, rightpops, output_file,
               input_ind_suff="_mod1", 
               output_folder ="./output/qpAdm/", 
               path_bin_qpAdm = "/n/groups/reich/hringbauer/o2bin/qpAdm",
-              all_snps=False):
+              all_snps=False, delete=True):
     """Run qpAdm. Write temporary parfile and run the analysis
     leftpops: List of left populations
     rightpops: List of right populations
@@ -30,7 +30,9 @@ def qpAdm_run(leftpops, rightpops, output_file,
     par_file_folder: Folder of the parameterfile
     input_file: The name of the input file
     input_ind_suff: Suffix of .ind file. To allow modified populations
-    input_ind: name of the input .ind file. If given - write over default"""
+    input_ind: name of the input .ind file. If given - write over default
+    delete: Whether to delete the parfile after the run. Default True as
+    these info can be found in the output file"""
     #print(os.getcwd())
     parfile_path = par_file_folder + "parfile." + output_file
     left_path = par_file_folder + "left." + output_file
@@ -66,6 +68,13 @@ def qpAdm_run(leftpops, rightpops, output_file,
     start = time()
     #!$path_bin_qpAdm -p $parfile_path > $output_path
     os.system(command)
+    
+    ### Delete the parfiles if selected
+    if delete:
+        os.remove(left_path)
+        os.remove(right_path)
+        os.remove(parfile_path)
+    
     end = time()
     
     print("Runtime: %2f" % (end - start))
@@ -171,7 +180,7 @@ def modifiy_iid_files(df_ind, pops_overwrite,
 def set_iids_to_label(df_ind, iids_overwrite, label_new="",
                     pops_overwrite12=[], savepath=""):
     """Modify .ind file. Overwrite individuals from pops_overwrite (list)
-    with their individuals labels. 
+    with their individuals labels. Return modified Data Frame
     df_ind: Dataframe from Individuals in .ind file
     iids_overwrite: List of iids to overwrite
     label_new: New label. If empty, use individual iids
@@ -195,6 +204,8 @@ def set_iids_to_label(df_ind, iids_overwrite, label_new="",
     if len(savepath)>0:
         df_ind.to_csv(savepath, sep=" ", index=None, header=False)
         print(f"Saved {len(df_ind)} Individuals to {savepath}")
+        
+    return df_ind
         
         
 def load_individuals_filetered(

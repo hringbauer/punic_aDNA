@@ -7,6 +7,7 @@ import numpy as np
 import os  # For Saving to Folder
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
 import socket
 import os as os
 import sys as sys
@@ -71,7 +72,8 @@ def load_pvals(path):
     """Load and parse qpAdm log file for p-Value.
     Return: 
     p-val:  p-Value
-    pops: [Target, Source]"""
+    pops: [Target, Source].
+    path: The full path of the log file"""
     
     pop_line, pop_line_end = -1, -1 # Where the populations are found   
     p_val_line = -1
@@ -111,8 +113,10 @@ def fig_admix(axes=[], res=[], p_vals=[], source_pops=[],
     p_vals: Array of p-Vals [n]
     source_pops: String Array of Source Pops [k]
     xlabels: String Array of Labels on x Axis [n]
-    stds: Standard Errors. If none are given do not plot them
+    stds: Standard Errors. If none are given do not plot them.
     l_pos: Where to place the Legend.
+    labels: [List of strings] Which Label to plot onto Legend. If empyt list,
+    use the source labels from the source_pops input
     lw: Linewidth of bar"""
     
     ### Define Axes if not given
@@ -381,7 +385,7 @@ def plot_qpadm(dir_path, test_pops, xlabels=[], labels=[],
 def plot_qpadm_split(dir_path, test_pops=[[]], 
                      save_path="", 
                      best=True, figsize=(12,8),
-                     labels=[],
+                     labels_site=[], labels_source=[],
                      bw = 0.85, lw=2,
                      c=[], ec="white", fs=10, 
                      height_ratios=[1, 10], wspace=0.05, hspace=0.05,
@@ -390,8 +394,11 @@ def plot_qpadm_split(dir_path, test_pops=[[]],
     """Do 3 Way Admixtures of Sardinia
     best: Whether to use highest p-Val Submodel: 0 use the first, True use the best p-Value, 
     else use the old (first feasible)
-    test_pops: List of lists: Will be split up into subdataframes
-    pr: whether to print output"""
+    dir_path: The qpAdm output folder with all indivdiual model outputs
+    test_pops: List of lists of models. Single entry has format: "Target.S1.S2...SN"
+    labels_site: [List of strings] The labels for each Site.
+    labels_source: [List of strings] The labels for each Source.
+    pr: Boolean. Whether to print output"""
     
     ### Prepare the Plots
     width_ratios = [len(ls) for ls in test_pops]
@@ -461,7 +468,8 @@ def plot_qpadm_split(dir_path, test_pops=[[]],
             
         fig_admix(axes=[ax_adm, ax_p], res=admix_coeffs, 
                   p_vals=p_vals, 
-                  xlabels=pops_t, 
+                  xlabels=pops_t,
+                  labels=labels_source,
                   source_pops=source_pops, 
                   pval_lim=pval_lim, 
                   stds=stds, save_path = "", 
@@ -470,14 +478,14 @@ def plot_qpadm_split(dir_path, test_pops=[[]],
                   bw = bw, c=c, ec = ec, show=False,
                   legend=legend, l_pos = l_pos)
         
-        ### Turn off the Labels for all but first plot
+        ### Turn off the Y Labels for all but first plot
         if j>0:
             for ax in [ax_p, ax_adm]:
                 ax.set_yticklabels([])
                 ax.set_ylabel("")
                 
-        if len(labels)>0:
-                ax_adm.set_title(labels[j], fontsize=fs)
+        if len(labels_site)>0:
+                ax_adm.set_title(labels_site[j], fontsize=fs)
             
     if len(save_path) > 0:
         plt.savefig(save_path, bbox_inches = 'tight', 
