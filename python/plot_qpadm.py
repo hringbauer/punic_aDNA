@@ -101,10 +101,10 @@ def load_pvals(path):
 
 
 def fig_admix(axes=[], res=[], p_vals=[], source_pops=[], 
-              labels=[], xlabels=[],
+              labels=[], xlabels=[], 
               figsize=(12,8), save_path="", lw=2,
               pval_lim=[1e-6,1.0], stds=[], alpha=0.9,
-              l_pos = (1, 0.5), fs = 12, bw = 0.85, 
+              l_pos = (1, 0.5), fs = 12, bw = 0.85, sgfc=0.05, 
               c=[], ec = "white", show=False,
               height_ratios=[1, 8], rotation=90, legend=True):
     """Make a Figure of the admixture coefficients.
@@ -168,7 +168,7 @@ def fig_admix(axes=[], res=[], p_vals=[], source_pops=[],
     ax0.set_yscale("log")
     ax0.set_ylim(pval_lim)
     ax0.bar(r, p_vals, color="grey", width=barWidth, alpha=0.8, zorder=1)
-    ax0.axhline(y=0.05, color='r', zorder=0)
+    ax0.axhline(y=sgfc, color='r', zorder=0)
     ax0.set_ylabel("p-Val", fontsize=fs)
     ax0.set_xlim([-0.6,len(xlabels)-0.4])
     ax0.set_xticks([])
@@ -298,7 +298,7 @@ def create_latex_lines(source_pops, admix_coeffs, stds, p_vals, na = "-", rp = "
 def plot_qpadm(dir_path, test_pops, xlabels=[], labels=[],
                save_path="", l_pos = (0.4, 1.15), 
                best=True, figsize=(12,8), bw = 0.85, lw=2,
-               height_ratios = [1,8], sort_p=False, 
+               height_ratios = [1,8], sort_p=False, sgfc=0.05, 
                c=[], alpha=0.9, ec="white", fs=10, pval_lim = [1e-3,1],
                latex=False, dataframe=False):
     """Do 3 Way Admixtures of Sardinia
@@ -364,7 +364,7 @@ def plot_qpadm(dir_path, test_pops, xlabels=[], labels=[],
     
     fig_admix(res=admix_coeffs, stds=stds, 
               p_vals=p_vals, labels=labels, xlabels=xlabels,
-              source_pops=source_pops, 
+              source_pops=source_pops, sgfc=sgfc,
               pval_lim=pval_lim, save_path = save_path, 
               l_pos = l_pos, lw=lw, 
               height_ratios=height_ratios,
@@ -386,10 +386,10 @@ def plot_qpadm_split(dir_path, test_pops=[[]],
                      save_path="", 
                      best=True, figsize=(12,8),
                      labels_site=[], labels_source=[],
-                     bw = 0.85, lw=2,
+                     bw = 0.85, lw=2, 
                      c=[], ec="white", fs=10, 
                      height_ratios=[1, 10], wspace=0.05, hspace=0.05,
-                     pval_lim = [1e-3, 1], pr=False,
+                     pval_lim = [1e-3, 1], sgfc=0.05, pr=False,
                      legend=True, l_pos=[]):
     """Do 3 Way Admixtures of Sardinia
     best: Whether to use highest p-Val Submodel: 0 use the first, True use the best p-Value, 
@@ -471,7 +471,7 @@ def plot_qpadm_split(dir_path, test_pops=[[]],
                   xlabels=pops_t,
                   labels=labels_source,
                   source_pops=source_pops, 
-                  pval_lim=pval_lim, 
+                  pval_lim=pval_lim, sgfc=sgfc,
                   stds=stds, save_path = "", 
                   lw=lw, 
                   fs=fs, figsize=figsize, 
