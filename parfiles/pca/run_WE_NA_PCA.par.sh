@@ -27,7 +27,7 @@ PATH="$PATH:/n/groups/reich/iosif/sw/msdir/msdir"
 
 ##### PARAMS #####
 TDIR="/n/scratch2/am483"
-PFILE="run_WE_NA_PCA.v49.2.par"
+PFILE="run_WE_NA_PCA.v51.1.par"
 
 ##### ACTION #####
 ~np29/o2bin/smartpca -p ./$PFILE

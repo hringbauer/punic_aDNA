@@ -1,9 +1,8 @@
 DIR: ./eigenstrat/
-S1: anc_only.v49.2
-indivname: DIR/S1.akhziv.loc_ind.ind
+S1: anc_only.v51.1
+indivname: DIR/S1.outgroups.megiddo.ind
 snpname: DIR/S1.snp
 genotypename: DIR/S1.geno
 popleft: ./parfiles/left
 popright: ./parfiles/right
 details: YES
-allsnps: YES
