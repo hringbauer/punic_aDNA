@@ -242,7 +242,7 @@ def get_meta_ind_table(path_ind="./eigenstrat/combined/punic.v49.0.ind",
     print(f"Loaded {len(df)} Individuals")
 
     df_meta = pd.read_csv(path_anno, sep=",")
-    df2 = df_meta[["iid", "Master ID", "loc", "n_cov_snp", "mean_cov", "sex"]]
+    df2 = df_meta[["iid", "Master ID", "loc", "n_cov_snp", "avg_cov_snp", "sex"]]
     df = pd.merge(df, df2, on="iid", how="left")
     idx = (df["n_cov_snp"]<min_snp)
     df = df[~idx]
