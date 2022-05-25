@@ -60,7 +60,6 @@ def load_qp_adm(path, infeasible=False):
     
     # Post-process the important Lines:
     res_t = np.array([s.split()[:len(pops)+4] for s in res]) # 8 is valid for 3 pops!
-    print(res_t)
     res = res_t[:,5:].astype("float")
     p_vals = res_t[:,4].astype("float")
     stds = np.array(stds.split())[2:].astype("float")  # Extract the Standard Deviations for the first line
