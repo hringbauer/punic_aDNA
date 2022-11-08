@@ -5,8 +5,8 @@
 #SBATCH -c 1                    # Number of cores requested
 #SBATCH -N 1                    # Ensure that all cores are on one machine (span[hosts=1])
 #SBATCH --mem=60G               # Memory total in GB (see also --mem-per-cpu)
-#SBATCH --output=./logs/%A_%a.out
-#SBATCH --error=./logs/%A_%a.err
+#SBATCH --output=/n/groups/reich/hringbauer/git/punic_aDNA/parfiles/pca/logs/%A_%a.out
+#SBATCH --error=/n/groups/reich/hringbauer/git/punic_aDNA/parfiles/pca/logs/%A_%a.err
 
 ##### N&I NAGIC #####
 LD_LIBRARY_PATH=/opt/lsf/7.0/linux2.6-glibc2.3-x86_64/lib:/opt/nag/libC/lib:/usr/lib
@@ -27,7 +27,7 @@ PATH="$PATH:/n/groups/reich/iosif/sw/msdir/msdir"
 
 ##### PARAMS #####
 TDIR="/n/scratch2/am483"
-PFILE="run_WE_NA_PCA.v51.1.par"
+PFILE="/n/groups/reich/hringbauer/git/punic_aDNA/parfiles/pca/run_WE_NA_PCA.v54.1.par"
 
 ##### ACTION #####
-~np29/o2bin/smartpca -p ./$PFILE
+~np29/o2bin/smartpca -p $PFILE
