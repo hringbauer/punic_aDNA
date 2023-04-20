@@ -5,6 +5,7 @@ figures/
 parfiles/qpAdm/
 parfiles/dates/
 parfiles/pca/logs/
+parfiles/pca_var/logs/
 cluster/qpAdm/logs/
 
 # Byte-compiled / optimized / DLL files
