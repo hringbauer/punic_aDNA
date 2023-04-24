@@ -1,4 +1,4 @@
-DATE:		   20230417
+DATE:		   20230425
 BUILD:		   construct_WE_NA_PCA
 BASE:          /n/groups/reich/hringbauer/git/punic_aDNA
 INDIR:         BASE/eigenstrat/varPCA/
@@ -15,5 +15,6 @@ lsqproject: YES
 shrinkmode:  NO
 hiprecision: YES
 numoutevec: 4
+numoutlieriter: 5
 hashcheck: NO
 topright:  Georgian
