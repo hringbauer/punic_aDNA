@@ -1,8 +1,8 @@
-DATE:		   20221108
+DATE:		   20230602
 BUILD:		   construct_WE_NA_PCA
 BASE:          /n/groups/reich/hringbauer/git/punic_aDNA
 INDIR:         BASE/eigenstrat/
-GENO:          punic.v54.1_HO
+GENO:          punic.v54.1_HO2
 OUTDIR:        BASE/output/pca/v54.1
 genotypename:  INDIR/GENO.geno
 snpname:       INDIR/GENO.snp
