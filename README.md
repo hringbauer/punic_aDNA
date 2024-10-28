@@ -2,7 +2,7 @@ This GitHub repository contains the code for analyzing and plotting results that
 ancestry with few genetic links to their eastern Phoenician cultural forebears**.
 
 # Key contacts and contributors
-Harald Ringbauer, Ayelet Salman-Minkov, Ilan Gronau
+Harald Ringbauer, Ayelet Salman-Minkov, Tomer Peled, Ilan Gronau
 
 Please feel free to email any of us if you have questions about our code.
 
