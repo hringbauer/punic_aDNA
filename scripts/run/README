@@ -1,0 +1,101 @@
+This directory includes scripts written to run qpAdm analysis for Ringbauer et al. (2024)
+** All scripts in this directory were written by Tomer Peled, Ayelet Salman-Minkov, and Ilan Gronau
+=========================================================================================
+
+Things you need to make sure of before you run analysis:
+   - install admixr package for R
+   - set up run the configuration script (../configureScripts.sh)
+   - place the follosing genomic data files in the dataDir path specified in the configuration script above:
+       ancient_genomes.v54.geno
+       ancient_genomes.v54.ind
+       ancient_genomes.v54.snp
+
+The analysis pipeline is executed via the following steps:
+1) Execute prepare-qpadm-ind-file.sh
+   to create a copy of the .ind file with pop labels that can be used in qpAdm analysis
+
+2) Execute run-analysis-eastern.sh 
+   to fit Eastern qpAdm models. 
+   This script runs multiple jobs in parallel.
+   Set maxJobs variable to the max number of jobs you with to run in parallel
+
+3) Execute run-analysis-western.sh
+   to fit Western qpAdm models.
+   Can be run in parallel to step 2 above
+   This script runs multiple jobs in parallel.
+   Set maxJobs variable to the max number of jobs you with to run in parallel
+
+4) Execute run-analysis-broad.sh
+   to fit Broad qpAdm models to idnividuals without Eastern or Western models.
+   Can be run only after steps 2-3 above have concluded.
+   This script runs multiple jobs in parallel.
+   Set maxJobs variable to the max number of jobs you with to run in parallel
+
+5) Execute combine-qpadm-models.sh
+   to combine the output files of steps 2-4 above into one file.
+   Can be run only after steps 2-4 above have concluded.
+   This script produces the main output file (combined-pars-models.tsv)
+   used in nearly all qpAdm-based plots
+
+6) Execute run-analysis-broad-select.sh
+   to fit Broad qpAdm models to idnividuals for illustrative purposes.
+   This script produces an output file used when plotting fig SI2.
+   Can be run in parallel to steps 2-5 above.
+   This script runs multiple jobs in parallel.
+   Set maxJobs variable to the max number of jobs you with to run in parallel
+
+Directory contents:
+
+Scripts run in steps 1-6 above:
+
+1) prepare-qpadm-ind-file.sh
+    Prepares ind file with appropriate pop labels for qpAdm
+    - each analyzed individual has its sample id as a pop id
+    - reference (right) pops and proxy source (left) pops are set
+
+2) run-analysis-eastern.sh 
+    Fits individuals with Eastern ancestry models
+
+3) run-analysis-western.sh
+    Fits individuals with Western ancestry models
+
+4) run-analysis-broad.sh 
+    Fits individuals with Broad ancestry models
+    Only analyzes individuals with no Eastern or Western models
+    Should be executed after run-analysis-eastern.sh and run-analysis-western.sh
+
+5) combine-qpadm-models.sh
+    Combines output tables for different qpAdm analyses
+    (Eastern + Western + Broad)
+
+6) run-analysis-broad-select.sh 
+    Fits select individuals with Broad ancestry models
+    Used to illustrate ambiguous ancestry
+
+Auxilliary scripts run by the scripts above:
+
+* launch-batch-qpadm-runs.sh
+    Runs a qpAdm analysis on a list of targets in parallel
+
+* run-qpadm-admixr.R
+    Run qpAdm on a list of target individuals
+     using the same setting for all of them
+
+* group-out-tables.sh
+    Groups qpAdm output tables into one output table
+
+* expand-sources.R
+    Expand output table for qpAdm to a given set of proxy sources.
+    Sets ancestry proportions to 0 for non-participating pops
+
+* compute-nested-p-values.R
+    Computes nested p-values for all models given an output
+    table for qpAdm 
+
+* filter-parsimony-models.R
+    Computes parsimonious models based on pre-computed
+    set of valid models and their p-values 
+
+* targets-with-no-models.R
+    Computes list of indivudlas with no valid model in 
+    a given output table of qpAdm

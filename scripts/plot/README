@@ -1,0 +1,59 @@
+This directory includes scripts written to plot figures with qpAdm estimates for Ringbauer et al. (2024)
+** All scripts in this directory were written by Tomer Peled, Ayelet Salman-Minkov, and Ilan Gronau
+=========================================================================================
+
+Things you need to make sure of before you run analysis:
+   - install the follwoing packages for R: tidyverse plyr plotly
+   - set up run the configuration script (../configureScripts.sh)
+   - make sure that the main table with qpAdm results (combined-pars-models.tsv)
+     is in the qpAdm subdirectory of the output directory (as specified in the config)
+
+Each figure has its plotting script in R:
+1) plot-fig2.R
+   generates 5 PDF files (one per region) with summary of estimates for high coverage samples.
+   These plots are combined to generate main Fig 2.
+
+2) plot-figS3.R
+   generates 5 PDF files (one per region) with all parsimonious qpAdm models.
+   These plots are combined to generate supp Fig S3.
+
+3) plot-figS4.R
+   generates one PDF file with a 2D scatter plot of PCA-based and qpAdm-based estimates of North African ancestry
+   computes the PCA-based and qpAdm-based estimates using the procedure outlined in the SI.
+   Used as is for supp Fig S4.
+
+4) plot-figS7.R
+   generates 3 PDF files (one per group) with all parsimonious qpAdm models for Sicilian individuals.
+   These plots are combined to generate supp Fig S7.
+   Note that 2nd panel (Punic) is the same one generated in supp Fig S3 for Sicily.
+
+5) plot-figSI_2.R
+   generates one PDF file with all parsimonious "broad ancestry" qpAdm models for a select set of individuals.
+   This is used for supp info Fig SI2.
+   Note: uses the qpAdm data table broadModelsSelect-pars-models-with-p.tsv
+         in subdir qpAdm/broadModelsSelect/ in the output directory 
+
+Directory contents:
+
+Scripts run in 1-5 above:
+
+1) plot-fig2.R
+2) plot-figS3.R
+3) plot-figS4.R
+4) plot-figS7.R
+5) plot-figSI_2.R
+
+Auxilliary scripts run by the scripts above (using 'source'):
+
+* plot-settings.R.sav
+    Sets up various variables for plotting scripts.
+
+* prepare-data-tables.R
+    Prepares data table before plotting
+
+* filter-models.R
+    Filters models based on a given set of categories and a region
+
+* generate-one-qpadm-plot.R
+    Generates a single plot with qpAdm estimates for all parsimonious models
+    inferred for a given set of individuals (after filtering)
